@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة تحكم الحجوزات</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .admin-wrap{max-width:1200px;margin:auto;padding:45px 7%}.admin-top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:25px}.admin-top h1{font-size:38px}.muted{color:var(--muted)}
+    .auth-box,.dashboard{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:28px}.auth-box{max-width:480px;margin:60px auto}.auth-box h1{margin-bottom:8px}.auth-box label{display:block;margin:16px 0 7px}.auth-box input{margin-bottom:4px}.auth-actions{display:flex;gap:10px;margin-top:18px}.auth-actions button{flex:1}.admin-button{border:0;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;padding:12px 18px;border-radius:11px;font-weight:700;cursor:pointer}.danger{background:#8e3340}.secondary{background:#27324a}.message{margin-top:15px;padding:12px;border-radius:10px;display:none}.table-wrap{overflow:auto}.booking-table{width:100%;border-collapse:collapse;min-width:850px}.booking-table th,.booking-table td{padding:15px 10px;border-bottom:1px solid var(--border);text-align:right}.booking-table th{color:#a996ff}.badge{display:inline-block;padding:5px 10px;border-radius:30px;font-size:12px}.pending{background:#5c4b13;color:#ffe79b}.approved{background:#154d35;color:#aef0c8}.cancelled{background:#54242b;color:#ffc2c8}.actions{display:flex;gap:7px;flex-wrap:wrap}.empty{text-align:center;padding:40px;color:var(--muted)}
+    @media(max-width:700px){.admin-wrap{padding:30px 5%}.admin-top{align-items:flex-start;flex-direction:column}.admin-top h1{font-size:30px}}
+  </style>
+</head>
+<body>
+  <header class="navbar"><a class="logo" href="index.html">موقعي<span>.</span></a><a class="nav-button" href="index.html">العودة للموقع</a></header>
+
+  <main class="admin-wrap">
+    <section id="authSection" class="auth-box">
+      <p class="eyebrow">دخول الإدارة</p><h1>لوحة التحكم</h1>
+      <p class="muted">أنشئ حساب الإدارة مرة واحدة، ثم استخدم بريدك وكلمة المرور للدخول.</p>
+      <label>البريد الإلكتروني<input id="email" type="email" placeholder="admin@example.com"></label>
+      <label>كلمة المرور<input id="password" type="password" placeholder="6 أحرف أو أكثر"></label>
+      <div class="auth-actions"><button class="admin-button" id="loginBtn">دخول</button><button class="admin-button secondary" id="signupBtn">إنشاء حساب</button></div>
+      <div id="authMessage" class="message"></div>
+    </section>
+
+    <section id="dashboardSection" class="dashboard" style="display:none">
+      <div class="admin-top"><div><p class="eyebrow">الإدارة</p><h1>الحجوزات</h1><p class="muted">تابع الطلبات ووافق عليها أو ألْغها.</p></div><button class="admin-button secondary" id="logoutBtn">تسجيل الخروج</button></div>
+      <div id="dashboardMessage" class="message"></div>
+      <div class="table-wrap"><table class="booking-table"><thead><tr><th>العميل</th><th>الهاتف</th><th>البريد</th><th>التاريخ</th><th>الوقت</th><th>الحالة</th><th>الإجراء</th></tr></thead><tbody id="bookingsBody"></tbody></table></div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
